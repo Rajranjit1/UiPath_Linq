@@ -1,0 +1,64 @@
+                              Testing Loan Application Process
+
+1>Opening application for manual testing 
+
+ The test data is provided in an Excel sheet. We initiate manual testing to observe the software's behavior and evaluate the time required for this process.
+
+1.1) Sequentially, we utilize data from the Excel sheet to assess the software's behavior through manual testing.
+     In a positive scenario,LoanGranted in test data is 'yes' results in the message "Congratulations! You have been approved for a loan.
+     
+1.2) In the negative scenario, an empty email field in test data prompts the message "Sorry, at this time you have not been approved for a loan.
+
+1.3) Conversely, another negative scenario emerges when the provided age is less than 18, leading to the message "Loan is not approved.
+
+These tests encompass both positive and negative scenarios to comprehensively evaluate the software's functionality.
+
+1.4) The manual testing process may become time-consuming when dealing with a vast amount of data. Moreover, the probability of human error is higher.
+
+
+
+ Not it's time for Automation testing through uipath testsuite The bot starts execution process.
+
+
+2> We're now initiating automation software testing to observe the software's behavior and assess the time needed for this process.
+
+2.1) Sequentially, we're using test data from the Excel sheet to evaluate the software's behavior through automation testing.
+     In a positive scenario,LoanGranted in test data is 'yes' successful test data results the message "Congratulations! You have been approved for a loan.
+
+2.2) In the negative scenario, an empty email field in test data triggers the message "Sorry, at this time you have not been approved for a loan.
+
+2.3) Conversely, encountering an age less than 18 leads to the message "Loan is not approved.
+
+These tests cover both positive and negative scenarios, providing a comprehensive evaluation of the software's functionality.
+
+2.4) Automation testing significantly reduces the time required, even when handling extensive datasets.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
