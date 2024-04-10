@@ -1,0 +1,71 @@
+1.> Introduction to .Columns.Cast Method in LINQ
+      .Columns.Cast applied to DataTable
+
+dt.Columns:
+    i> Returns a collection of DataColumn objects representing the columns of a Data Table
+    dt.Columns: System.Data.DataColumnCollection
+dt.Columns.Cast(of T):
+    ii> method is used to convert each element in the collection to the specified type
+  dt.Columns.Cast(of System.Data.DataColumn):
+     System.Data.DataColumnCollection  >> IEnumerable[of DataColumns]
+QUERY : dt.Columns.Cast(of System.Data.DataColumn).Select(Function(x) x.ColumnName).ToList
+      .Select method convert data column into String format
+
+2.> Introduction to .GroupBy Method in LINQ
+
+(i)QUERY dt.AsEnumerable.GroupBy(Function(x) x("Item").ToString.Trim)
+    Returns : IGrouping[String, DataRow]
+    Interface(a group which has a common key) Grouping
+    Key, Element
+    [apple],{"1", "apple", "5"}
+    [apple],{"1", "apple", "5"}
+  
+ 2nd exm- [orange], {"2","orange","10"}
+          [orange], {"5","orange","15"}
+(ii) SelectMany(): Group all the collection into 1 collection
+      Returns : IEnumerabl[DataRow]
+     QUERY : dt.AsEnumerable.GroupBy(Function(x) x("Item").ToString.Trim).SelectMany(Function(grp) grp).CopyToDataTable
+NOTE :    IGrouping[String, DataRow] >>> IEnumerable[DataRow] >> CopyToDataTable >>> DataTable
+
+3.> LINQ Aggregate Functions or LINQ Aggregate Operators(Sum, Count, Min, Max, Average, and Aggregate)
+ <a> .Count Method
+  i) Count Method = Count no. of rows present in the datatable 
+             dt.AsEnumerable.Count()
+ ii) Count How many IT employees are there in the dt
+  QUERY = dt.AsEnumerable.Count(Function(x) x("Dept").ToString.Trim.Equals("IT"))    , Dept is the column name
+ iii) How many from IT And HR
+  QUERY = dt.AsEnumerable.Count(Function(x) x("Dept").ToString.Trim.Equals("IT") or x("Dept").ToString.Equals("HR"))
+ iv) How many from IT whose salary is > 20000
+ QUERY = dt.AsEnumerable.Count(Function(x) x("Dept").ToSting.Trim.Equals("IT") _
+          And Cint(x("Salary")) > 20000)
+ v) How many from IT and HR whose Salary is >=20000
+    dt.AsEnumerable.Count(Function(x)
+     Cint(x("Salary")) >=20000 _
+     And x("Dept").ToString.Trim.Equals("IT") _
+      or x("Dept").ToString.Trim.Equals("HR"))
+ <b> .Sum Method in LINQ
+  Note- Syntax: 
+          CollectionName.Sum()
+          Or Dt.AsEnumerable.Sum(Lambda Function<Col.Name>)
+  Note- If the sequence is empty, the .Sum method returns the additive identity for the numeric type
+   (e.g., 0 for integers, 0.0 for floating-point numbers)
+Practical :
+        i> if list is empty: output will be 0
+       ii> adding two list1 and List2 to List3:
+         list1.Zip(list2, Function(x,y) x+y).Sum()
+      iii> DataTable Sum:
+            dt.AsEnumerable.Sum(Function(x) Cint(x("Salary")))
+QUESTION 1 : Arr_Value = {8,"Raju",24,"Sunil",86}  sum integer value
+       QUERY :  Arr_Value.ofType(of Integer)().Sum
+
+QUESTION 2 : Arr_Value = {"18","Raju","24","Sunil","86"}  sum integer value
+        Arr_Value.Where(Function(x) Integer.TryParse(x.ToString,Nothing)).Select(Function(x) Integer.Parse(x.ToString)).Sum()
+
+
+4.> GroupBy and .Sum Method in Linq
+
+      
+       
+
+
+
